@@ -1,0 +1,40 @@
+{
+  "name": "rest-api-error-factory",
+  "version": "0.1.0-dev.0",
+  "description": "A factory function to create REST API error classes.",
+  "main": "index.js",
+  "scripts": {
+    "test": "nyc --reporter=lcov mocha",
+    "codecov": "codecov"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fenivana/rest-api-error-factory.git"
+  },
+  "keywords": [
+    "rest",
+    "restful",
+    "error handling"
+  ],
+  "author": "Jiang Fengming",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fenivana/rest-api-error-factory/issues"
+  },
+  "homepage": "https://github.com/fenivana/rest-api-error-factory#readme",
+  "devDependencies": {
+    "babel-eslint": "^8.2.6",
+    "codecov": "^3.0.4",
+    "eslint": "^5.3.0",
+    "eslint-config-enough": "^0.3.4",
+    "mocha": "^5.2.0",
+    "nyc": "^12.0.2"
+  },
+  "eslintConfig": {
+    "extends": "enough",
+    "env": {
+      "node": true,
+      "mocha": true
+    }
+  }
+}
