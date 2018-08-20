@@ -1,33 +1,59 @@
+// Passing arrow functions (“lambdas”) to Mocha is discouraged.
+// https://mochajs.org/#arrow-functions
+/* eslint prefer-arrow-callback: "off" */
+
 const assert = require('assert')
+const errorFactory = require('../')
 
 const errors = {
   CLIENT_INVALID_PARAM: {
     message: 'Invalid parameter (%s).',
     httpStatus: 400
-  },
-
-  CLIENT_RESOURCE_NOT_FOUND: {
-    message: 'Resouce not found.',
-    httpStatus: 404
-  },
-
-  SERVER_WORKER_TIMEOUT: {
-    message: 'Prerender worker timed out.',
-    httpStatus: 500
-  },
-
-  SERVER_INTERNAL_ERROR: {
-    message: 'Server Internal Error (EVENT_ID: %s-%s).',
-    httpStatus: 500
-  },
-
-  SERVER_RENDER_ERROR: {
-    message: 'Some error occured while rendering the page (%s).',
-    httpStatus: 500
-  },
-
-  SERVER_CACHE_LOCK_TIMEOUT: {
-    message: 'Waiting for cache lock timed out (%s).',
-    httpStatus: 500
   }
 }
+
+describe('restAPIErrorFactory', function() {
+  it('should create an error instance', function() {
+    const RESTError = errorFactory(errors)
+    const e = new RESTError('CLIENT_INVALID_PARAM', 'articleId')
+    assert.strictEqual(e.code, 'CLIENT_INVALID_PARAM')
+    assert.strictEqual(e.message, 'Invalid parameter (articleId).')
+    assert.strictEqual(e.httpStatus, 400)
+    assert.deepStrictEqual(JSON.parse(JSON.stringify(e)), {
+      code: 'CLIENT_INVALID_PARAM',
+      message: 'Invalid parameter (articleId).'
+    })
+  })
+
+  it('error should contain passed props', function() {
+    const RESTError = errorFactory(errors)
+    const e = new RESTError('CLIENT_INVALID_PARAM', 'articleId', { articleId: 'abc' })
+    assert.strictEqual(e.code, 'CLIENT_INVALID_PARAM')
+    assert.strictEqual(e.message, 'Invalid parameter (articleId).')
+    assert.strictEqual(e.httpStatus, 400)
+    assert.strictEqual(e.articleId, 'abc')
+    assert.deepStrictEqual(JSON.parse(JSON.stringify(e)), {
+      code: 'CLIENT_INVALID_PARAM',
+      message: 'Invalid parameter (articleId).',
+      articleId: 'abc'
+    })
+  })
+
+  it('should create an error from json', function() {
+    const RESTError = errorFactory(errors)
+    const e = new RESTError({
+      code: 'CLIENT_INVALID_PARAM',
+      message: 'Invalid parameter (articleId).',
+      articleId: 'abc'
+    })
+    assert.strictEqual(e.code, 'CLIENT_INVALID_PARAM')
+    assert.strictEqual(e.message, 'Invalid parameter (articleId).')
+    assert.strictEqual(e.httpStatus, 400)
+    assert.strictEqual(e.articleId, 'abc')
+    assert.deepStrictEqual(JSON.parse(JSON.stringify(e)), {
+      code: 'CLIENT_INVALID_PARAM',
+      message: 'Invalid parameter (articleId).',
+      articleId: 'abc'
+    })
+  })
+})

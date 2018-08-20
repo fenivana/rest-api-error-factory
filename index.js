@@ -25,7 +25,7 @@ module.exports = function(errors) {
           props = null
         }
 
-        super(format(errors[code], ...args))
+        super(format(errors[code].message, ...args))
 
         Object.defineProperty(this, 'httpStatus', {
           value: errors[code].httpStatus,
