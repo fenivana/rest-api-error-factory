@@ -78,6 +78,8 @@ app.listen(3000)
 ### restAPIErrorFactory(errorDefs)
 Creates an error class that contains error definitions you passed.
 
+`errorDefs` format:
+
 ```js
 {
   ERROR_CODE: {
@@ -102,10 +104,10 @@ const RESTError = restAPIErrorFactory({
 ### new RESTError(errorCode, [messageParam1, messageParam2, ...], [extraProperties])
 Creates an error instance.
 
-Params:
-errorCode: String. The error code you defined in error definition object.  
-messageParams: String | Number. The error message will be formatted by util.format(message, messageParam1, messageParam2, ...). See [util.format](https://nodejs.org/api/util.html#util_util_format_format_args) for details.  
-extraProperties: Object. Extra properties to set.  
+#### Params:
+`errorCode`: String. The error code you defined in error definition object.  
+`messageParams1`, `messageParam2`, ...: String | Number. The params to format the error message. The message will be formatted by `util.format(message, messageParam1, messageParam2, ...)`. See [util.format](https://nodejs.org/api/util.html#util_util_format_format_args) for details.  
+`extraProperties`: Object. Extra properties to set.  
 
 Example:
 ```js
