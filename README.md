@@ -79,7 +79,6 @@ app.listen(3000)
 Creates an error class that contains error definitions you passed.
 
 `errorDefs` format:
-
 ```js
 {
   ERROR_CODE: {
@@ -127,4 +126,19 @@ console.log(e.toJSON())
 
 httpStatus will be excluded
 */
+```
+
+### new RESTError(json)
+Creates an error instance from JSON object.
+
+#### Params:
+`json`: JSON object. You can get it from `restError.toJSON()`.
+
+Example:
+```js
+const e = new RESTError({
+  code: 'CLIENT_INVALID_PARAM',
+  message: 'Invalid parameter (id).',
+  id: 'foo'
+})
 ```
