@@ -122,5 +122,7 @@ console.log(e.toJSON())
   message: 'Invalid parameter (id).'
   id: 'foo'
 }
+
+httpStatus will be excluded
 */
 ```
