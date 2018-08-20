@@ -19,7 +19,7 @@ describe('restAPIErrorFactory', function() {
     assert.strictEqual(e.code, 'CLIENT_INVALID_PARAM')
     assert.strictEqual(e.message, 'Invalid parameter (articleId).')
     assert.strictEqual(e.httpStatus, 400)
-    assert.deepStrictEqual(JSON.parse(JSON.stringify(e)), {
+    assert.deepStrictEqual(e.toJSON(), {
       code: 'CLIENT_INVALID_PARAM',
       message: 'Invalid parameter (articleId).'
     })
@@ -32,7 +32,7 @@ describe('restAPIErrorFactory', function() {
     assert.strictEqual(e.message, 'Invalid parameter (articleId).')
     assert.strictEqual(e.httpStatus, 400)
     assert.strictEqual(e.articleId, 'abc')
-    assert.deepStrictEqual(JSON.parse(JSON.stringify(e)), {
+    assert.deepStrictEqual(e.toJSON(), {
       code: 'CLIENT_INVALID_PARAM',
       message: 'Invalid parameter (articleId).',
       articleId: 'abc'
@@ -50,7 +50,7 @@ describe('restAPIErrorFactory', function() {
     assert.strictEqual(e.message, 'Invalid parameter (articleId).')
     assert.strictEqual(e.httpStatus, 400)
     assert.strictEqual(e.articleId, 'abc')
-    assert.deepStrictEqual(JSON.parse(JSON.stringify(e)), {
+    assert.deepStrictEqual(e.toJSON(), {
       code: 'CLIENT_INVALID_PARAM',
       message: 'Invalid parameter (articleId).',
       articleId: 'abc'

@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fenivana/rest-api-error-factory.git"
+    "url": "git+https://github.com/kasha-io/rest-api-error-factory.git"
   },
   "keywords": [
     "rest",
@@ -19,9 +19,9 @@
   "author": "Jiang Fengming",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fenivana/rest-api-error-factory/issues"
+    "url": "https://github.com/kasha-io/rest-api-error-factory/issues"
   },
-  "homepage": "https://github.com/fenivana/rest-api-error-factory#readme",
+  "homepage": "https://github.com/kasha-io/rest-api-error-factory#readme",
   "devDependencies": {
     "babel-eslint": "^8.2.6",
     "codecov": "^3.0.4",
